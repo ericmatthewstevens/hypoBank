@@ -23,6 +23,27 @@ public class acctCalc {
 
   }
 
-  
+  public double withdrawl(double adjustmentAmount, double account) {
+
+    char decisionChar = ' ';
+
+    if (adjustmentAmount < 0) {
+      JOptionPane.showMessageDialog(null, "Please enter a valid USD($) value.");
+    } else if (adjustmentAmount > accountBalance) {
+      JOptionPane.showInputDialog(null, "Warning!" + "\n"
+      + "You are about to withdrawl an amount that exceeds your available balance by " + (accountBalance + adjustmentAmount) + "\n"
+      + "If you agree to this transaction, your account will be overdrawn and locked, until the overdrawn balance is debited." + "\n"
+      + "Do you wish to continue with this transaction? Y/N");
+      if (decisionChar == 'Y') {
+        accountBalance-=adjustmentAmount;
+      } else if (decisionChar == 'N') {
+        return accountBalance;
+      }
+    }
+
+    return accountBalance;
+
+  }
+
   
 }
