@@ -28,6 +28,45 @@ public class CheckingAccount extends bankAccount {
     *           Withdraw 
     */
 
+   public static void checkingInterface(String clientName, float checkingBalance) {
+      
+      boolean runChecking = true;
+
+      while(runChecking) {
+
+         System.out.println(clientName + "'s Checking Account Summary" + "\n" +
+                           "Available Balance: $" + checkingBalance);
+
+         System.out.println("Command List: " + "\n" +
+                           "1. Deposit" + "\n" + 
+                           "2. Withdraw" + "\n" +
+                           "3. Back to main menu");
+
+         String selectionKey = scanner.nextLine();
+
+         switch (selectionKey) {
+            case "1":
+                  System.out.println("Enter your deposit amount.");
+                  float depositAmount = scanner.nextFloat();
+                  deposit(depositAmount, checkingBalance);
+               break;
+         
+            case "2":
+                  System.out.println("Enter your withdrawl amount.");
+                  float withdrawlAmount = scanner.nextFloat();
+                  withdraw(withdrawlAmount, checkingBalance);
+               break;
+
+            case "3":
+                  runChecking = false;
+                  bankAccount.getAccountSelection(clientName);
+               break;               
+      }
+
+
+      }
+   }
+
    /** Charge Service Fee method(float checkingBalance, float serviceFee)
     *  Return type of (float) checkingBalance
     *   if (the checking balance is greater than or equal to $0 AND less than or equal to $500)
@@ -55,5 +94,22 @@ public class CheckingAccount extends bankAccount {
      *    
      *    return checkingBalance;
      */
+
+         /** Withdraw method ((float) Transaction Amount)
+     *    Use a getter for the correct account balance and subtract the (float) Transaction amount from it
+     */
+
+     public static float withdraw(float transactionAmount, float accountAmount) {
+        return accountAmount - transactionAmount;
+     }
+
+         /** Deposit method ((float) Transaction Amount)
+     *    Use a getter for the correct account balance and add the (float) Transaction amount to it
+     * 
+     */
+
+     public static float deposit(float transactionAmount, float accountAmount) {
+        return accountAmount + transactionAmount;
+     }
   
 }

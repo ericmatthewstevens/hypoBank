@@ -87,7 +87,7 @@ public class bankAccount {
 
       switch (selectionKey) {
         case "1":
-          
+            CheckingAccount.checkingInterface(clientName, checkingBalance);
           break;
         case "2":
 
@@ -162,16 +162,16 @@ public class bankAccount {
      *    Use a getter for the correct account balance and subtract the (float) Transaction amount from it
      */
 
-    public float withdraw(float transactionAmount, float accountAmount) {
-      return accountAmount - transactionAmount;
+    public static float withdraw() {
+      return 0;
     }
 
     /** Deposit method ((float) Transaction Amount)
      *    Use a getter for the correct account balance and add the (float) Transaction amount to it
      * 
      */
-    public static float deposit(float transactionAmount, float accountAmount) {
-      return accountAmount + transactionAmount;
+    public static float deposit() {
+      return 0;
     }
 
 
