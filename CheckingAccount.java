@@ -87,6 +87,26 @@ public class CheckingAccount extends bankAccount {
     *   return checkingBalance
     */
 
+    public static float serviceFeeCharge(float checkingBalance, float serviceFee) {
+       
+       if(checkingBalance > 1500) {
+          System.out.println("Great Job! No service fee this month!");
+          return checkingBalance;
+       } else if (checkingBalance > 1000 && checkingBalance <= 1500) {
+          serviceFee = 10;
+          return checkingBalance -= serviceFee;
+       } else if (checkingBalance > 500 && checkingBalance <= 1500) {
+          serviceFee = 15;
+          return checkingBalance -= serviceFee;
+       } else if (checkingBalance >= 0 && checkingBalance <= 500) {
+          serviceFee = 20;
+          return checkingBalance -= serviceFee;
+       } else {
+          return -1;
+       }
+       
+    }
+
     /** Overdraft charge(float checkingBalance, float overdraftFee)
      *    Return type of (float) checkingBalance
      *      if (the checking balance is less than $0)
@@ -95,7 +115,15 @@ public class CheckingAccount extends bankAccount {
      *    return checkingBalance;
      */
 
-         /** Withdraw method ((float) Transaction Amount)
+     public static float overdraftCharge(float checkingBalance, float overdraftFee) {
+        if(checkingBalance < 0) {
+           checkingBalance += overdraftFee;
+        }
+
+        return checkingBalance;
+     }
+
+     /** Withdraw method ((float) Transaction Amount)
      *    Use a getter for the correct account balance and subtract the (float) Transaction amount from it
      */
 
