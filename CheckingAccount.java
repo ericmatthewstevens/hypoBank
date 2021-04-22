@@ -48,13 +48,13 @@ public class CheckingAccount extends bankAccount {
             case "1":
                   System.out.println("Enter your deposit amount.");
                   float depositAmount = scanner.nextFloat();
-                  deposit(depositAmount, checkingBalance);
+                  checkingBalance = deposit(depositAmount, checkingBalance);
                break;
          
             case "2":
                   System.out.println("Enter your withdrawl amount.");
                   float withdrawlAmount = scanner.nextFloat();
-                  withdraw(withdrawlAmount, checkingBalance);
+                  checkingBalance = withdraw(withdrawlAmount, checkingBalance);
                break;
 
             case "3":
