@@ -87,7 +87,7 @@ public class bankAccount {
 
       switch (selectionKey) {
         case "1":
-            CheckingAccount.checkingInterface(clientName, checkingBalance);
+            CheckingAccount.userInterface(clientName, checkingBalance);
           break;
         case "2":
 
@@ -102,6 +102,10 @@ public class bankAccount {
           break;
       }
 
+    }
+
+    public static void userInterface(String clientName, float totalAcctBalance) {
+      System.out.println("Error");
     }
 
 

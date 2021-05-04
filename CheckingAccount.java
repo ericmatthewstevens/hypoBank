@@ -28,7 +28,7 @@ public class CheckingAccount extends bankAccount {
     *           Withdraw 
     */
 
-   public static void checkingInterface(String clientName, float checkingBalance) {
+   public static void userInterface(String clientName, float checkingBalance) {
       
       boolean runChecking = true;
 
