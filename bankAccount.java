@@ -23,25 +23,23 @@ public class bankAccount {
    public static String clientName;
    private static String dateOfBirth;
 
-   private static float totalAcctBalance;
+   private static float accountBalance;
    private static float transactionAmount;
-   private static float checkingBalance;
-   private static float savingsBalance;
+  //  private static float checkingBalance;
+  //  private static float savingsBalance;
    public static Scanner scanner = new Scanner(System.in);
 
    /** bankAccount Constructor
     *     Initialize all variables
     */
 
-    bankAccount(int accountNumber, int routingNumber, String clientName, String dateOfBirth, float totalAcctBalance, float transactionAmount, float checkingBalance, float savingsBalance) {
+    bankAccount(int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount) {
       this.accountNumber = accountNumber;
       this.routingNumber = routingNumber;
       this.clientName = clientName;
       this.dateOfBirth = dateOfBirth;
-      this.totalAcctBalance = totalAcctBalance;
+      this.accountBalance = accountBalance;
       this.transactionAmount = transactionAmount;
-      this.checkingBalance = checkingBalance;
-      this.savingsBalance = savingsBalance;
     }
 
 
@@ -62,7 +60,13 @@ public class bankAccount {
       return clientName;
     }
 
+    public float getTotalAcctBalance(float accountBalance) {
+      return accountBalance;
+    }
 
+    public void setTotalAcctBalance(float accountBalance) {
+      this.accountBalance = accountBalance;
+    }
 
     public static void main(String[] args) {
       
@@ -83,11 +87,45 @@ public class bankAccount {
                          "4. Exit");
 
       
-      String selectionKey = scanner.nextLine();
+      String accountKey = scanner.nextLine();
+      String selectionKey;
 
-      switch (selectionKey) {
+      do {
+      switch (accountKey) {
         case "1":
-            CheckingAccount.userInterface(clientName, checkingBalance);
+            consumerAccount checkingAccount = new consumerAccount(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount);
+
+            do {
+              System.out.println("Hello " + clientName + "!" + "\n" +
+              "Current Balance: $" + checkingAccount.getAccountBalance(accountBalance) + "\n" +
+              "How may we help you today?");
+              System.out.println("1. Deposit" + "\n" + 
+               "2. Withdrawl" + "\n" +
+               "3. Back to Main Menu");
+              selectionKey = scanner.nextLine(); 
+
+                switch (selectionKey) {
+                  case "1":
+                    System.out.println("How much money would you like to deposit into your checking account?");
+                    transactionAmount = scanner.nextFloat();
+                    accountBalance = checkingAccount.deposit(transactionAmount, accountBalance);
+                    System.out.println("Deposited $" + transactionAmount + " into your account.");
+                  break;
+
+                  case "2":
+                    System.out.println("How much money would you like to withdraw from your checking account");
+                    transactionAmount = scanner.nextFloat();
+                    accountBalance = checkingAccount.withdraw(transactionAmount, accountBalance);
+                    System.out.println("Withdrew $" + transactionAmount + " from your account.");
+                    break;
+
+                  case "3":
+                    
+                  break;
+
+                } 
+              }
+              while (selectionKey == "1" || selectionKey == "2");
           break;
         case "2":
 
@@ -100,13 +138,9 @@ public class bankAccount {
       
         default:
           break;
+         }
+        } while (accountKey != "4");
       }
-
-    }
-
-    public static void userInterface(String clientName, float totalAcctBalance) {
-      System.out.println("Error");
-    }
 
 
     /** public method, no return type
@@ -160,23 +194,5 @@ public class bankAccount {
         }
        }  
       }
-     
-
-    /** Withdraw method ((float) Transaction Amount)
-     *    Use a getter for the correct account balance and subtract the (float) Transaction amount from it
-     */
-
-    public static float withdraw() {
-      return 0;
-    }
-
-    /** Deposit method ((float) Transaction Amount)
-     *    Use a getter for the correct account balance and add the (float) Transaction amount to it
-     * 
-     */
-    public static float deposit() {
-      return 0;
-    }
-
 
 }
