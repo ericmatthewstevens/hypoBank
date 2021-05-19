@@ -2,8 +2,8 @@ public class SavingsAccount extends bankAccount {
 
   private float interestRate;
 
-  SavingsAccount (int accountNumber, int routingNumber, String clientName, String dateOfBirth, float totalAcctBalance, float transactionAmount, float checkingBalance, float savingsBalance, float interestRate) {
-    super(accountNumber, routingNumber, clientName, dateOfBirth, totalAcctBalance, transactionAmount, checkingBalance, savingsBalance);
+  SavingsAccount (int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount, float interestRate) {
+    super(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount);
     this.interestRate = interestRate;
   }
 

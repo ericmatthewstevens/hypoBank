@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 import java.lang.Math;
 
 public class bankAccount {
@@ -21,9 +22,10 @@ public class bankAccount {
    private static int routingNumber;
 
    public static String clientName;
+   private static String clientPassword;
    private static String dateOfBirth;
 
-   private static float totalAcctBalance;
+   private static float accountBalance;
    private static float transactionAmount;
    private static float checkingBalance;
    private static float savingsBalance;
@@ -33,17 +35,20 @@ public class bankAccount {
     *     Initialize all variables
     */
 
-    bankAccount(int accountNumber, int routingNumber, String clientName, String dateOfBirth, float totalAcctBalance, float transactionAmount, float checkingBalance, float savingsBalance) {
+    bankAccount(int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount) {
       this.accountNumber = accountNumber;
       this.routingNumber = routingNumber;
       this.clientName = clientName;
       this.dateOfBirth = dateOfBirth;
-      this.totalAcctBalance = totalAcctBalance;
+      this.accountBalance = accountBalance;
       this.transactionAmount = transactionAmount;
-      this.checkingBalance = checkingBalance;
-      this.savingsBalance = savingsBalance;
     }
 
+    public static void main(String[] args) {
+      System.out.println("Username: ");
+      clientName = scanner.nextLine();
+      getAccountSelection(clientName);
+    }
 
    /** public method, no return, utilizes switch cases
     *   in order to call different methods
@@ -58,19 +63,19 @@ public class bankAccount {
     * 
     */
 
-    public String getClientName(String clientName) {
+    public static String getClientName(String clientName) {
       return clientName;
     }
 
 
 
-    public static void main(String[] args) {
+    // public static void main(String[] args) {
       
-      System.out.println("Please provide your full name: ");
-      clientName = scanner.nextLine();
+    //   System.out.println("Please provide your full name: ");
+    //   clientName = scanner.nextLine();
 
-      getAccountSelection(clientName);
-    }
+    //   getAccountSelection(clientName);
+    // }
 
     public static void getAccountSelection(String clientName) {
 
@@ -87,11 +92,12 @@ public class bankAccount {
 
       switch (selectionKey) {
         case "1":
-            CheckingAccount.userInterface(clientName, checkingBalance);
+            CheckingAccount checkingAccount = new CheckingAccount(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount);
+            userInterface(clientName, accountBalance);
           break;
         case "2":
 
-          break;
+            break;
         case "3":
             getClientInfo(accountNumber,routingNumber,clientName,dateOfBirth);
           break;

@@ -1,20 +1,24 @@
 public class CheckingAccount extends bankAccount {
 
   private float serviceFee;
-  final float overdraftFee;
+  private float overdraftFee = 0;
 
   /** CheckingAccount constructor;
    *    Initialize variables
    */
 
-   CheckingAccount (int accountNumber, int routingNumber, String clientName, String dateOfBirth, float totalAcctBalance, float transactionAmount, float checkingBalance, float savingsBalance, float serviceFee, float overdraftFee) {
-      super(accountNumber, routingNumber, clientName, dateOfBirth, totalAcctBalance, transactionAmount, checkingBalance, savingsBalance);
+   CheckingAccount (int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount) {
+      super(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount);
       this.serviceFee = serviceFee;
       this.overdraftFee = overdraftFee;
    }
 
    public float getServiceFee(float serviceFee) {
       return serviceFee;
+   }
+
+   public void setServiceFee(float serviceFee) {
+      this.serviceFee = serviceFee;
    }
 
    public float getOverdraftFee(float overdraftFee) {
@@ -58,9 +62,13 @@ public class CheckingAccount extends bankAccount {
                break;
 
             case "3":
+                  getAccountSelection(clientName);
                   runChecking = false;
-                  bankAccount.getAccountSelection(clientName);
-               break;               
+               break;     
+            
+            default:
+                  getAccountSelection(clientName);
+               break;
       }
 
 
