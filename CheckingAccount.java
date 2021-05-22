@@ -138,25 +138,8 @@ public class CheckingAccount extends bankAccount {
         return checkingBalance;
      }
 
-     /** Withdraw method ((float) Transaction Amount)
-     *    Use a getter for the correct account balance and subtract the (float) Transaction amount from it
-     */
+      public static float getAccountBalance() {
+         return 0;
+      }
 
-     public static float withdraw(float transactionAmount, float accountAmount) {
-        return accountAmount - transactionAmount;
-     }
-
-         /** Deposit method ((float) Transaction Amount)
-     *    Use a getter for the correct account balance and add the (float) Transaction amount to it
-     * 
-     */
-
-     public static float deposit(float transactionAmount, float accountAmount) {
-        return accountAmount + transactionAmount;
-     }
-
-				public static float getAccountBalance() {
-					return 0;
-				}
-  
 }
