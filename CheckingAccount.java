@@ -3,6 +3,8 @@ public class CheckingAccount extends bankAccount {
   private float serviceFee;
   private float overdraftFee = 0;
 
+  private float checkingBalance;
+
   /** CheckingAccount constructor;
    *    Initialize variables
    */
@@ -23,6 +25,14 @@ public class CheckingAccount extends bankAccount {
 
    public float getOverdraftFee(float overdraftFee) {
       return overdraftFee;
+   }
+
+   public float getCheckingBalance(float checkingBalance) {
+      return checkingBalance;
+   }
+
+   public void setCheckingBalance(float checkingBalance) {
+      this.checkingBalance = checkingBalance;
    }
 
    /**   CHECKING OVERVIEW
@@ -52,13 +62,13 @@ public class CheckingAccount extends bankAccount {
             case "1":
                   System.out.println("Enter your deposit amount.");
                   float depositAmount = scanner.nextFloat();
-                  checkingBalance = deposit(depositAmount, checkingBalance);
+                  checkingBalance = Operations.deposit(depositAmount, checkingBalance);
                break;
          
             case "2":
                   System.out.println("Enter your withdrawl amount.");
                   float withdrawlAmount = scanner.nextFloat();
-                  checkingBalance = withdraw(withdrawlAmount, checkingBalance);
+                  checkingBalance = Operations.withdraw(withdrawlAmount, checkingBalance);
                break;
 
             case "3":
@@ -66,9 +76,6 @@ public class CheckingAccount extends bankAccount {
                   runChecking = false;
                break;     
             
-            default:
-                  getAccountSelection(clientName);
-               break;
       }
 
 
@@ -147,5 +154,9 @@ public class CheckingAccount extends bankAccount {
      public static float deposit(float transactionAmount, float accountAmount) {
         return accountAmount + transactionAmount;
      }
+
+				public static float getAccountBalance() {
+					return 0;
+				}
   
 }
