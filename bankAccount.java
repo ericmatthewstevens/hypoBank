@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDateTime;
 
 import java.lang.Math;
 
@@ -30,6 +31,7 @@ public class bankAccount {
    private static float transactionAmount;
    protected static float checkingBalance;
    private static float savingsBalance;
+   public static LocalDateTime myLocalDateTime = LocalDateTime.now(); // Creates a date object
    public static Scanner scanner = new Scanner(System.in);
 
    /** bankAccount Constructor

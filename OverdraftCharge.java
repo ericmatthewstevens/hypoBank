@@ -11,7 +11,12 @@ public interface OverdraftCharge {
      */
 
 
-  public static float overdraftCharge() {
-    return 0;
-  }
+  public static float overdraftCharge(float checkingBalance, float overdraftFee) {
+    if(checkingBalance < 0) {
+       checkingBalance += overdraftFee;
+    }
+
+    return checkingBalance;
+ }
+
 }
