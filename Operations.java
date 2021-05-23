@@ -1,6 +1,9 @@
+import javax.lang.model.element.Element;
+
 public class Operations {
   
-  private float transactionAmount;
+  private static float transactionAmount;
+  public static int overdraftCounter = 0;
 
 
   /**
@@ -23,6 +26,16 @@ public class Operations {
       if (transactionAmount < 1) {
         System.out.println("Deposits valued less than $1 are not accepted.");
         return accountBalance;
+      } else if((accountBalance < 0) && (overdraftCounter > 0)) {
+          if(accountBalance + transactionAmount < 0) {
+            System.out.println("This account has been overdrafted." + "\n" + "Current Balance: $" + accountBalance + "\n" +"Please pay off the balance." + "\n");
+            return accountBalance + transactionAmount;
+          } else if (accountBalance + transactionAmount >= 0) {
+            System.out.println("This account is no longer overdrafted." + "\n" + "Current Balance: $" + accountBalance + "\n" +"Thank you for banking with Hypo Bank, LLC." + "\n");
+            return accountBalance + transactionAmount;
+          } else {
+            return accountBalance;
+          }
       } else {
         accountBalance += transactionAmount;
         return accountBalance;
@@ -48,10 +61,17 @@ public class Operations {
       if ((accountBalance < transactionAmount) && (accountBalance < 0)) {
         System.out.println("Please enter an amount greater than your available balance");
         return accountBalance;
-      } else if (accountBalance - transactionAmount <= -1) {
-        System.out.println("This account has been overdrafted. Please pay off the balance");
-        return accountBalance;
-      } else if (accountBalance - transactionAmount <= 50) {
+      } else if ((accountBalance - transactionAmount <= -1) && (accountBalance - transactionAmount >= -50)) {
+        System.out.println("This account has been overdrafted." + "\n" + "Current Balance: $" + accountBalance + "\n" +"Please pay off the balance." + "\n");
+
+        overdraftCounter++;
+          if (overdraftCounter > 0) {
+            System.out.println("This account has been locked until the balance is paid off. Thank you!");
+            return accountBalance;
+          } else {
+            return accountBalance -= transactionAmount;
+          }
+      } else if ((accountBalance - transactionAmount <= 50) && (accountBalance - transactionAmount > 0)){
         accountBalance -= transactionAmount;
         System.out.println("ALERT! Please be aware that your current balance is $" + accountBalance + ". Proceed with caution to avoid an overdraft.");
         return accountBalance;

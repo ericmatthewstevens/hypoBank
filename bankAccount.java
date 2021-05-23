@@ -18,6 +18,7 @@ public class bankAccount {
    *      (float) savings account balance
    */
 
+
    private static int accountNumber;
    private static int routingNumber;
 
@@ -27,7 +28,7 @@ public class bankAccount {
 
    private static float accountBalance;
    private static float transactionAmount;
-   private static float checkingBalance;
+   protected static float checkingBalance;
    private static float savingsBalance;
    public static Scanner scanner = new Scanner(System.in);
 
@@ -35,13 +36,14 @@ public class bankAccount {
     *     Initialize all variables
     */
 
-    bankAccount(int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount) {
+    bankAccount(int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount, float checkingBalance) {
       this.accountNumber = accountNumber;
       this.routingNumber = routingNumber;
       this.clientName = clientName;
       this.dateOfBirth = dateOfBirth;
       this.accountBalance = accountBalance;
       this.transactionAmount = transactionAmount;
+      this.checkingBalance = checkingBalance;
     }
 
     public static void main(String[] args) {
@@ -67,22 +69,12 @@ public class bankAccount {
       return clientName;
     }
 
-
-
-    // public static void main(String[] args) {
-      
-    //   System.out.println("Please provide your full name: ");
-    //   clientName = scanner.nextLine();
-
-    //   getAccountSelection(clientName);
-    // }
-
     public static void getAccountSelection(String clientName) {
 
       System.out.println("Welcome " + clientName + "!" + "\n" + 
                          "Account Acccess Portal" + "\n" + 
       "Which account would you like to access?");
-      System.out.println("1. Individual Checking Account" + "\n" +
+      System.out.println("1. Individual Checking Account" + " Balance: $" + CheckingAccount.getAccountBalance() + "\n" +
                          "2. High-Yield Interest Savings Account" + "\n" +
                          "3. Personal Information" + "\n" + 
                          "4. Exit");
@@ -92,8 +84,8 @@ public class bankAccount {
 
       switch (selectionKey) {
         case "1":
-            CheckingAccount checkingAccount = new CheckingAccount(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount);
-            userInterface(clientName, accountBalance);
+            CheckingAccount.userInterface(clientName, accountBalance);
+            checkingBalance = CheckingAccount.getAccountBalance();
           break;
         case "2":
 
@@ -108,10 +100,6 @@ public class bankAccount {
           break;
       }
 
-    }
-
-    public static void userInterface(String clientName, float totalAcctBalance) {
-      System.out.println("Error");
     }
 
 

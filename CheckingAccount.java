@@ -3,14 +3,12 @@ public class CheckingAccount extends bankAccount {
   private float serviceFee;
   private float overdraftFee = 0;
 
-  private float checkingBalance;
-
   /** CheckingAccount constructor;
    *    Initialize variables
    */
 
-   CheckingAccount (int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount) {
-      super(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount);
+   CheckingAccount (int accountNumber, int routingNumber, String clientName, String dateOfBirth, float accountBalance, float transactionAmount, float checkingBalance) {
+      super(accountNumber, routingNumber, clientName, dateOfBirth, accountBalance, transactionAmount, checkingBalance);
       this.serviceFee = serviceFee;
       this.overdraftFee = overdraftFee;
    }
@@ -102,25 +100,25 @@ public class CheckingAccount extends bankAccount {
     *   return checkingBalance
     */
 
-    public static float serviceFeeCharge(float checkingBalance, float serviceFee) {
+   //  public static float serviceFeeCharge(float checkingBalance, float serviceFee) {
        
-       if(checkingBalance > 1500) {
-          System.out.println("Great Job! No service fee this month!");
-          return checkingBalance;
-       } else if (checkingBalance > 1000 && checkingBalance <= 1500) {
-          serviceFee = 10;
-          return checkingBalance -= serviceFee;
-       } else if (checkingBalance > 500 && checkingBalance <= 1500) {
-          serviceFee = 15;
-          return checkingBalance -= serviceFee;
-       } else if (checkingBalance >= 0 && checkingBalance <= 500) {
-          serviceFee = 20;
-          return checkingBalance -= serviceFee;
-       } else {
-          return -1;
-       }
+   //     if(checkingBalance > 1500) {
+   //        System.out.println("Great Job! No service fee this month!");
+   //        return checkingBalance;
+   //     } else if (checkingBalance > 1000 && checkingBalance <= 1500) {
+   //        serviceFee = 10;
+   //        return checkingBalance -= serviceFee;
+   //     } else if (checkingBalance > 500 && checkingBalance <= 1500) {
+   //        serviceFee = 15;
+   //        return checkingBalance -= serviceFee;
+   //     } else if (checkingBalance >= 0 && checkingBalance <= 500) {
+   //        serviceFee = 20;
+   //        return checkingBalance -= serviceFee;
+   //     } else {
+   //        return -1;
+   //     }
        
-    }
+   //  }
 
     /** Overdraft charge(float checkingBalance, float overdraftFee)
      *    Return type of (float) checkingBalance
@@ -130,13 +128,6 @@ public class CheckingAccount extends bankAccount {
      *    return checkingBalance;
      */
 
-     public static float overdraftCharge(float checkingBalance, float overdraftFee) {
-        if(checkingBalance < 0) {
-           checkingBalance += overdraftFee;
-        }
-
-        return checkingBalance;
-     }
 
       public static float getAccountBalance() {
          return 0;
