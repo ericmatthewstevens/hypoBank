@@ -1,3 +1,4 @@
+package src.main.java.com.hypo_bank;
 public interface ServiceFeeCharge {
   
   final float serviceFee = 0;

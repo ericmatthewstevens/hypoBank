@@ -1,3 +1,4 @@
+package src.main.java.com.hypo_bank;
 import java.util.Scanner;
 import java.time.LocalDateTime;
 
@@ -47,13 +48,6 @@ public class bankAccount {
       this.transactionAmount = transactionAmount;
       this.checkingBalance = checkingBalance;
     }
-
-    public static void main(String[] args) {
-      System.out.println("Username: ");
-      clientName = scanner.nextLine();
-      getAccountSelection(clientName);
-    }
-
    /** public method, no return, utilizes switch cases
     *   in order to call different methods
     *    "Account Access Portal"
@@ -90,7 +84,7 @@ public class bankAccount {
             checkingBalance = CheckingAccount.getAccountBalance();
           break;
         case "2":
-
+            System.out.println("The selected feature is not yet available. '\n' Please select a different option.");
             break;
         case "3":
             getClientInfo(accountNumber,routingNumber,clientName,dateOfBirth);

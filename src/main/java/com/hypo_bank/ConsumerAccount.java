@@ -1,9 +1,10 @@
+package src.main.java.com.hypo_bank;
 /**
  * ConsumerAccount
  */
 public class ConsumerAccount {
 
-  protected static float accountBalance = 
+  protected static float accountBalance = 0;
 
   //A getter for the account balance should be used to view the current account balance.
   public float getAccountBalance(float accountBalance) {

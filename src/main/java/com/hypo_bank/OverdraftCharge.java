@@ -1,3 +1,4 @@
+package src.main.java.com.hypo_bank;
 public interface OverdraftCharge {
   
   final float overdraftFee = 15;

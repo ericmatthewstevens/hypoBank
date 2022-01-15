@@ -1,3 +1,4 @@
+package src.main.java.com.hypo_bank;
 public class CheckingAccount extends bankAccount {
 
   private float serviceFee;
