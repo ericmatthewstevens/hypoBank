@@ -18,6 +18,10 @@ def create_app():
     login_manager.login_view = "auth.login" # If the user is not logged in, redirect them to "auth.login" (the login page)
     login_manager.init_app(app)
 
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
     create_database(app)
 
     return app

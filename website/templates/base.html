@@ -7,7 +7,30 @@
     <title>HypoBank Home</title>
 </head>
 <body>
+    <nav class="navbar navbar-expanded-lg navbar-dark bg-dark">
+        <div class="container-fluid">
 
+            <a class="navbar-brand" href="#">HypoBank LLC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar">
+             <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    {% if user.is_authenticated %}
+                    <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
+                    {% else %}
+                    <a class="nav-link active" aria-current="page" href="/sign-up">Sign Up</a>
+                    <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <footer class=""
     
 </body>
 </html>
